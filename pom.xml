@@ -24,10 +24,21 @@
 
     <properties>
 
+        <kafka-clients.version>0.11.0.3</kafka-clients.version>
+
     </properties>
 
     <dependencyManagement>
+        <dependencies>
 
+            <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-clients</artifactId>
+                <version>${kafka-clients.version}</version>
+            </dependency>
+
+        </dependencies>
     </dependencyManagement>
 
     <dependencies>
