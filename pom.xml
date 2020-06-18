@@ -32,6 +32,17 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>cn.by1e.ox</groupId>
+            <artifactId>ox-core</artifactId>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>
