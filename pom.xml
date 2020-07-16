@@ -18,6 +18,7 @@
     <modules>
         <module>h2o-study-zookeeper</module>
         <module>h2o-study-kafka</module>
+        <module>h2o-study-leetcode</module>
     </modules>
 
     <packaging>pom</packaging>
