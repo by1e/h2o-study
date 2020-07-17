@@ -12,19 +12,14 @@ import cn.by1e.ox.core.util.SleepUtils;
  */
 public class Algorithm000 implements Algorithm<Integer> {
 
-    public int func(int a) {
+    public int example(int a) {
         SleepUtils.sleepSeconds(1);
         return a + 1;
     }
 
     @Override
     public AlgorithmOutput<Integer> execute(AlgorithmInput input) {
-        return AlgorithmExecutor.function((param, watch) -> {
-            Object[] params = param.getParams();
-            int a = (int) params[0];
-
-            return AlgorithmExecutor.watch(() -> func(a), watch);
-        }, input);
+        return AlgorithmExecutor.function(() -> example((int) input.getParams()[0]));
     }
 
 }
