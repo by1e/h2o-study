@@ -1,26 +1,16 @@
 package cn.by1e.h2o.study.leetcode.algorithm;
 
+import cn.by1e.h2o.study.leetcode.algorithm.extend.ListNode;
 import cn.by1e.h2o.study.leetcode.algorithm.support.Algorithm;
 import cn.by1e.h2o.study.leetcode.algorithm.support.AlgorithmExecutor;
 import cn.by1e.h2o.study.leetcode.algorithm.support.AlgorithmInput;
 import cn.by1e.h2o.study.leetcode.algorithm.support.AlgorithmOutput;
-import lombok.Getter;
 
 /**
  * @author bangquan.qian
  * @date 2020-07-16 12:44
  */
-public class Algorithm002 implements Algorithm<Algorithm002.ListNode> {
-
-    @Getter
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
+public class Algorithm002 implements Algorithm<ListNode> {
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode lc = new ListNode(0);
