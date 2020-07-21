@@ -1,7 +1,5 @@
 package cn.by1e.h2o.study.leetcode.algorithm;
 
-import cn.by1e.h2o.study.leetcode.algorithm.support.AlgorithmExecutor;
-import cn.by1e.ox.core.util.ConsoleUtils;
 import org.junit.Test;
 
 /**
@@ -31,7 +29,7 @@ public class Algorithm002Test {
 
         Object[] params = new Object[]{l1, l2};
 
-        ConsoleUtils.prettyJson(AlgorithmExecutor.execute(Algorithm002.class, params));
+        AlgorithmTestHelper.test(Algorithm002.class, params);
     }
 
 }
