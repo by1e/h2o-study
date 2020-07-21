@@ -1,9 +1,6 @@
 package cn.by1e.h2o.study.leetcode.algorithm;
 
-import cn.by1e.h2o.study.leetcode.algorithm.support.Algorithm;
-import cn.by1e.h2o.study.leetcode.algorithm.support.AlgorithmExecutor;
-import cn.by1e.h2o.study.leetcode.algorithm.support.AlgorithmInput;
-import cn.by1e.h2o.study.leetcode.algorithm.support.AlgorithmOutput;
+import cn.by1e.h2o.study.leetcode.algorithm.support.*;
 
 /**
  * 标题：回文数
@@ -61,15 +58,17 @@ public class Algorithm009 implements Algorithm<Boolean> {
     }
 
     @Override
-    public AlgorithmOutput<Boolean> execute(AlgorithmInput input) {
-        return AlgorithmExecutor.function(() -> {
-            Object[] params = input.getParams();
+    public AlgorithmFunction<Boolean> execute(AlgorithmInput input) {
+        return () -> func(input);
+    }
 
-            int x = (int) params[0];
+    private Boolean func(AlgorithmInput input) {
+        Object[] params = input.getParams();
 
-            //return isPalindrome(x);
-            return isPalindrome2(x);
-        });
+        int x = (int) params[0];
+
+        //return isPalindrome(x);
+        return isPalindrome2(x);
     }
 
 }

@@ -14,19 +14,19 @@ public class AlgorithmExecutor {
         throw new NotSupportException();
     }
 
-    public static <T> Algorithm<T> of(Class<? extends Algorithm<T>> clz) {
+    private static <T> Algorithm<T> of(Class<? extends Algorithm<T>> clz) {
         return InvokeUtils.invokeRe(clz::newInstance);
     }
 
-    public static <T> AlgorithmOutput<T> execute(Algorithm<T> algorithm, Object... params) {
-        return algorithm.execute(AlgorithmInput.of(params));
+    private static <T> AlgorithmOutput<T> execute(Algorithm<T> algorithm, Object... params) {
+        return function(algorithm.execute(AlgorithmInput.of(params)));
     }
 
     public static <T> AlgorithmOutput<T> execute(Class<? extends Algorithm<T>> clz, Object... params) {
         return execute(of(clz), params);
     }
 
-    public static <T> AlgorithmOutput<T> function(AlgorithmFunction<T> function) {
+    private static <T> AlgorithmOutput<T> function(AlgorithmFunction<T> function) {
         StopWatch watch = new StopWatch();
         T result = null;
         try {

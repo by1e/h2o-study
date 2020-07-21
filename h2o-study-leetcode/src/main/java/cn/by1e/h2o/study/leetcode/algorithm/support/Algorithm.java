@@ -6,6 +6,6 @@ package cn.by1e.h2o.study.leetcode.algorithm.support;
  */
 public interface Algorithm<T> {
 
-    AlgorithmOutput<T> execute(AlgorithmInput input);
+    AlgorithmFunction<T> execute(AlgorithmInput input);
 
 }

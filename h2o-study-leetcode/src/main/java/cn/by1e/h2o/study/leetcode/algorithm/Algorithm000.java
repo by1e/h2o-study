@@ -1,9 +1,6 @@
 package cn.by1e.h2o.study.leetcode.algorithm;
 
-import cn.by1e.h2o.study.leetcode.algorithm.support.Algorithm;
-import cn.by1e.h2o.study.leetcode.algorithm.support.AlgorithmExecutor;
-import cn.by1e.h2o.study.leetcode.algorithm.support.AlgorithmInput;
-import cn.by1e.h2o.study.leetcode.algorithm.support.AlgorithmOutput;
+import cn.by1e.h2o.study.leetcode.algorithm.support.*;
 import cn.by1e.ox.core.util.SleepUtils;
 
 /**
@@ -18,8 +15,12 @@ public class Algorithm000 implements Algorithm<Integer> {
     }
 
     @Override
-    public AlgorithmOutput<Integer> execute(AlgorithmInput input) {
-        return AlgorithmExecutor.function(() -> example((int) input.getParams()[0]));
+    public AlgorithmFunction<Integer> execute(AlgorithmInput input) {
+        return () -> func(input);
+    }
+
+    private int func(AlgorithmInput input) {
+        return example((int) input.getParams()[0]);
     }
 
 }

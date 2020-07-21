@@ -1,10 +1,7 @@
 package cn.by1e.h2o.study.leetcode.algorithm;
 
 import cn.by1e.h2o.study.leetcode.algorithm.extend.ListNode;
-import cn.by1e.h2o.study.leetcode.algorithm.support.Algorithm;
-import cn.by1e.h2o.study.leetcode.algorithm.support.AlgorithmExecutor;
-import cn.by1e.h2o.study.leetcode.algorithm.support.AlgorithmInput;
-import cn.by1e.h2o.study.leetcode.algorithm.support.AlgorithmOutput;
+import cn.by1e.h2o.study.leetcode.algorithm.support.*;
 
 /**
  * @author bangquan.qian
@@ -40,15 +37,17 @@ public class Algorithm002 implements Algorithm<ListNode> {
     }
 
     @Override
-    public AlgorithmOutput<ListNode> execute(AlgorithmInput input) {
-        return AlgorithmExecutor.function(() -> {
-            Object[] params = input.getParams();
+    public AlgorithmFunction<ListNode> execute(AlgorithmInput input) {
+        return () -> func(input);
+    }
 
-            ListNode l1 = (ListNode) params[0];
-            ListNode l2 = (ListNode) params[1];
+    private ListNode func(AlgorithmInput input) {
+        Object[] params = input.getParams();
 
-            return addTwoNumbers(l1, l2);
-        });
+        ListNode l1 = (ListNode) params[0];
+        ListNode l2 = (ListNode) params[1];
+
+        return addTwoNumbers(l1, l2);
     }
 
 }
