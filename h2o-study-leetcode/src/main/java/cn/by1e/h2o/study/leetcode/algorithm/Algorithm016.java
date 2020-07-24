@@ -4,8 +4,6 @@ import cn.by1e.h2o.study.leetcode.algorithm.support.Algorithm;
 import cn.by1e.h2o.study.leetcode.algorithm.support.AlgorithmFunction;
 import cn.by1e.h2o.study.leetcode.algorithm.support.AlgorithmInput;
 
-import java.util.Arrays;
-
 /**
  * 标题：最接近的三数之和
  * <p>
@@ -49,12 +47,22 @@ public class Algorithm016 implements Algorithm<Integer> {
      * 内存消耗：39.6MB,在所有Java提交中击败了6.82%的用户
      */
     public int threeSumClosest2(int[] nums, int target) {
+        int len = nums.length;
         // 先排序
-        Arrays.sort(nums);
+        //Arrays.sort(nums);
+        //使用冒泡代替JDK，减少内存占用
+        for (int i = 0; i < len - 1; i++) {
+            for (int j = i + 1; j < len; j++) {
+                if (nums[i] > nums[j]) {
+                    int t = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = t;
+                }
+            }
+        }
         // 双指针优化O(n^2)
         int sum = 0;
         int dst = -1;
-        int len = nums.length;
         for (int i = 0; i < len; i++) {
             if (i > 0 && nums[i] == nums[i - 1]) {
                 // 第一个元素去重优化
