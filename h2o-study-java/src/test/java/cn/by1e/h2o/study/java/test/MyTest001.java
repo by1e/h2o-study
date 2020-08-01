@@ -12,7 +12,7 @@ import java.util.Map;
  * @author bangquan.qian
  * @date 2020-07-28 11:21
  */
-public class MyTest01 {
+public class MyTest001 {
 
     @Test
     public void test4() {
