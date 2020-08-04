@@ -182,4 +182,36 @@ public class MyThreadLocal {
         }
 
     }
+
+    public void test3() {
+        new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                while (true) {
+                    ThreadLocal<Student> tl = null;
+
+                    tl = new ThreadLocal<Student>() {
+                        @Override
+                        protected void finalize() throws Throwable {
+                            super.finalize();
+                            ConsoleUtils.sout(this + " finalize");
+                        }
+
+                        @Override
+                        protected Student initialValue() {
+                            return new Student(this + " jack");
+                        }
+                    };
+
+                    tl.get();
+
+                    //SleepUtils.sleep(TimeUnit.MICROSECONDS, 100);
+                }
+            }
+        }.start();
+
+        SleepUtils.sleep(TimeUnit.MINUTES, 10);
+    }
+
 }

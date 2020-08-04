@@ -11,6 +11,7 @@ public class MyThreadLocalTest {
     public static void main(String[] args) throws Throwable {
         MyThreadLocal myThreadLocal = new MyThreadLocal();
         // myThreadLocal.test();
-        myThreadLocal.test2();
+//        myThreadLocal.test2();
+        myThreadLocal.test3();
     }
 }
