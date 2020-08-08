@@ -12,6 +12,7 @@ public class MyTest {
 
     @Test
     public void test() {
+        
         log.info("hello: {}", "mary");
     }
 
