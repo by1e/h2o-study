@@ -64,7 +64,7 @@ public class ArrayFind {
         check(arr, tgt);
 
         int lft = 0;
-        int rgt = arr.length;
+        int rgt = arr.length - 1;
 
         do {
             int mid = (lft + rgt) >>> 1;
@@ -72,9 +72,9 @@ public class ArrayFind {
             if (cmp == 0) {
                 return mid;
             } else if (cmp > 0) {
-                lft = mid + 1;
-            } else {
                 rgt = mid - 1;
+            } else {
+                lft = mid + 1;
             }
         } while (lft <= rgt);
 

@@ -18,7 +18,7 @@
     <modules>
         <module>h2o-study-zookeeper</module>
         <module>h2o-study-kafka</module>
-        <module>h2o-study-leetcode</module>
+        <module>h2o-study-interview</module>
         <module>h2o-study-java</module>
         <module>h2o-study-spring</module>
         <module>h2o-study-dubbo</module>
