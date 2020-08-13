@@ -21,6 +21,7 @@ public class IntArrayRand {
     }
 
     private static void check2(int len, int min, int max) {
+        if (len < 0) {
             throw new IllegalArgumentException("len >= 0");
         }
         if (min > max) {

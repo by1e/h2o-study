@@ -48,6 +48,41 @@ public class ArraySortTest {
         testA(ArraySort::shell);
     }
 
+    @Test
+    public void test7() {
+        testC(ArraySort::count);
+    }
+
+    @Test
+    public void test8() {
+        testC(ArraySort::merge);
+    }
+
+    @Test
+    public void test9() {
+        testC(ArraySort::merge2);
+    }
+
+    @Test
+    public void test10() {
+        testC(ArraySort::bucket);
+    }
+
+    @Test
+    public void test11() {
+        testC(ArraySort::radix);
+    }
+
+    @Test
+    public void test12() {
+        testC(ArraySort::heap);
+    }
+
+    @Test
+    public void test13() {
+        testC(ArraySort::quick);
+    }
+
     private void testB(BiConsumer<Integer[], Integer> consumer) {
         int gap = RandomUtils.nextInt(2, 5);
         ConsoleUtils.sout("gap=" + gap);
@@ -67,6 +102,14 @@ public class ArraySortTest {
         ConsoleUtils.sout(checkSorted(arr, gap));
     }
 
+    private void testC(Consumer<int[]> consumer) {
+        int[] arr = ArrayUtils.toPrimitive(rand());
+        ConsoleUtils.json(arr);
+        consumer.accept(arr);
+        ConsoleUtils.json(arr);
+        ConsoleUtils.sout(checkSorted(arr));
+    }
+
     private void testA(Consumer<Integer[]> consumer) {
         Integer[] arr = new Integer[0];
         consumer.accept(arr);
@@ -81,6 +124,10 @@ public class ArraySortTest {
         consumer.accept(arr);
         ConsoleUtils.json(arr);
         ConsoleUtils.sout(checkSorted(arr));
+    }
+
+    private boolean checkSorted(int[] arr) {
+        return checkSorted(ArrayUtils.toObject(arr));
     }
 
     private boolean checkSorted(Integer[] arr) {
