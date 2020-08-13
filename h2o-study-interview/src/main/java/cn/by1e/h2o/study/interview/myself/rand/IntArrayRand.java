@@ -7,7 +7,29 @@ package cn.by1e.h2o.study.interview.myself.rand;
 public class IntArrayRand {
 
     /**
-     * 双循环生成随机数组
+     * 双循环生成随机数组，可重复
+     */
+    public static int[] rand2(int len, int min, int max) {
+        check2(len, min, max);
+
+        int[] res = new int[len];
+        for (int idx = 0; idx < len; idx++) {
+            res[idx] = rand(min, max);
+        }
+
+        return res;
+    }
+
+    private static void check2(int len, int min, int max) {
+            throw new IllegalArgumentException("len >= 0");
+        }
+        if (min > max) {
+            throw new IllegalArgumentException("min <= max");
+        }
+    }
+
+    /**
+     * 双循环生成随机不重复数组
      */
     public static int[] rand(int len, int min, int max) {
         check(len, min, max);
