@@ -5,7 +5,16 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ObjectUtils;
 
 /**
- * 冒泡排序、鸡尾酒排序；插入排序、二分插入排序，希尔排序；选择排序；快速排序；堆排序；归并排序；桶排序；计数排序；基数排序
+ * 冒泡排序、鸡尾酒排序；
+ * 插入排序、二分插入排序；
+ * 希尔排序；
+ * 选择排序；
+ * 快速排序；
+ * 堆排序；
+ * 归并排序；
+ * 桶排序；
+ * 计数排序；
+ * 基数排序；
  *
  * @author bangquan.qian
  * @date 2020-08-12 14:18
@@ -267,8 +276,43 @@ public class ArraySort {
     // 所需辅助空间 ------
     // 主要是递归造成的栈空间的使用(用来保存left和right等局部变量)，取决于递归树的深度，一般为O(logn)，最差为O(n)
     // 稳定性 ---------- 不稳定
-    public static void quick(int[] a) {
+    public static void quick(int[] arr) {
+        AssertUtils.notNull(arr);
+        quick0(arr, 0, arr.length - 1);
+    }
 
+    private static void quick0(int[] arr, int lft, int rgt) {
+        int ldx = lft;
+        int rdx = rgt;
+        int flg = arr[ldx];
+        while (ldx < rdx) {
+            while (arr[rdx] > flg && ldx < rdx) {
+                rdx--;
+            }
+            if (ldx < rdx) {
+                arr[ldx] = arr[rdx];
+                ldx++;
+            }
+            while (arr[ldx] < flg && ldx < rdx) {
+                ldx++;
+            }
+            if (ldx < rdx) {
+                arr[rdx] = arr[ldx];
+                rdx--;
+            }
+        }
+        //此时ldx==rdx
+        int pos = ldx;
+        arr[pos] = flg;
+
+        //继续完成左侧
+        if (pos - 1 > lft) {
+            quick0(arr, lft, pos - 1);
+        }
+        //继续完成右侧
+        if (pos + 1 < rgt) {
+            quick0(arr, pos + 1, rgt);
+        }
     }
 
     /**
