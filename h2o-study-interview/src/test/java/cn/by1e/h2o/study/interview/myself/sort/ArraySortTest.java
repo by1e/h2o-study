@@ -103,7 +103,15 @@ public class ArraySortTest {
     }
 
     private void testC(Consumer<int[]> consumer) {
-        int[] arr = ArrayUtils.toPrimitive(rand());
+        int[] arr = new int[0];
+        consumer.accept(arr);
+        ConsoleUtils.json(arr);
+
+        arr = new int[]{1};
+        consumer.accept(arr);
+        ConsoleUtils.json(arr);
+
+        arr = ArrayUtils.toPrimitive(rand());
         ConsoleUtils.json(arr);
         consumer.accept(arr);
         ConsoleUtils.json(arr);
@@ -145,7 +153,7 @@ public class ArraySortTest {
     }
 
     private Integer[] rand() {
-        return ArrayUtils.toObject(IntArrayRand.rand2(RandomUtils.nextInt(50, 100), 0, 99));
+        return ArrayUtils.toObject(IntArrayRand.rand2(RandomUtils.nextInt(10, 50), 0, 20));
     }
 
 }

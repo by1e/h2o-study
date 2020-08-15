@@ -284,8 +284,10 @@ public class ArraySort {
     private static void quick0(int[] arr, int lft, int rgt) {
         int ldx = lft;
         int rdx = rgt;
+
         int flg = arr[ldx];
         while (ldx < rdx) {
+            //比flg小的往左边放
             while (arr[rdx] > flg && ldx < rdx) {
                 rdx--;
             }
@@ -293,6 +295,7 @@ public class ArraySort {
                 arr[ldx] = arr[rdx];
                 ldx++;
             }
+            //比flg大的往右边放
             while (arr[ldx] < flg && ldx < rdx) {
                 ldx++;
             }
@@ -301,7 +304,7 @@ public class ArraySort {
                 rdx--;
             }
         }
-        //此时ldx==rdx
+        //此时ldx==rdx，形成闭环
         int pos = ldx;
         arr[pos] = flg;
 
@@ -327,57 +330,55 @@ public class ArraySort {
     // 平均时间复杂度 ---- O(nlogn)
     // 所需辅助空间 ------ O(n)
     // 稳定性 ------------ 稳定
-    public static void merge(int[] a) {
-        if (ArrayUtils.isEmpty(a)) {
-            return;
-        }
-        int n = a.length;
-        int low = 0;
-        int high = n - 1;
-        mergeSortPartSort(a, low, high);
+    public static void merge(int[] arr) {
+        AssertUtils.notNull(arr);
+        merge0(arr, 0, arr.length - 1);
     }
 
-    private static void mergeSortPartMerge(int[] a, int low, int mid, int high) {
-        // 两个指针
-        int p = low;
-        int q = mid + 1;
-        int len = high - low + 1;
-        // 临时数组，用于排序的备份
-        int[] t = new int[len];
-        for (int i = low; i <= high; i++)
-            t[i - low] = a[i];
-        for (int i = low; i <= high; i++) {
-            // 左半边已无剩余
-            if (p > mid) {
-                a[i] = t[q++ - low];
-            }
-            // 右半边已无剩余
-            else if (q > high) {
-                a[i] = t[p++ - low];
-            }
-            // 右半边当前元素小于左半边当前元素，取右半边的元素
-            else if (t[q - low] < t[p - low]) {
-                a[i] = t[q++ - low];
-            }
-            // 右半边当前元素大于或等于左半边当前元素，取左半边的元素
-            else {
-                a[i] = t[p++ - low];
-            }
+    private static void merge0(int[] arr, int lft, int rgt) {
+        int mid = (lft + rgt) / 2;
+
+        //左侧继续分治, [lft,mid]
+        if (lft < mid) {
+            merge0(arr, lft, mid);
         }
+        //右侧继续分治, [mid+1,rgt]
+        if (mid + 1 < rgt) {
+            merge0(arr, mid + 1, rgt);
+        }
+
+        //递归栈最小的任务单元数组元素个数为2个
+
+        //合并两个子任务
+        doMerge(arr, lft, mid, rgt);
     }
 
-    // 自顶而下，递归做法
-    private static void mergeSortPartSort(int[] a, int low, int high) {
-        // 分到每组一个元素为止
-        if (low >= high)
-            return;
-
-        int mid = (high - low) / 2 + low;
-        // 左右两边分治，分别进行排序
-        mergeSortPartSort(a, low, mid);
-        mergeSortPartSort(a, mid + 1, high);
-        // 左右两边归并
-        mergeSortPartMerge(a, low, mid, high);
+    private static void doMerge(int[] arr, int lft, int mid, int rgt) {
+        int len = rgt - lft + 1;
+        //备份[lft,rgt]数组，用于排序
+        int[] bak = new int[len];
+        for (int idx = 0; idx < len; idx++) {
+            bak[idx] = arr[idx + lft];
+        }
+        //双指针
+        //指向第一个数组的左侧开始
+        int lps = 0;
+        //指向第二个数组的左侧开始
+        int rps = mid + 1 - lft;
+        for (int idx = lft; idx <= rgt; idx++) {
+            if (lps > mid - lft) {
+                // 左侧元素已完成，只处理右侧元素
+                arr[idx] = bak[rps++];
+            } else if (rps > rgt - lft) {
+                // 右侧元素已完成，只处理左侧元素
+                arr[idx] = bak[lps++];
+            } else if (bak[lps] > bak[rps]) {
+                // 比较左右两个指针所指元素的大小
+                arr[idx] = bak[rps++];
+            } else {
+                arr[idx] = bak[lps++];
+            }
+        }
     }
 
     /**
@@ -385,21 +386,23 @@ public class ArraySort {
      *
      * @param a 要排序的数组
      */
-    public static void merge2(int[] a) {
-        if (ArrayUtils.isEmpty(a)) {
-            return;
-        }
-        int n = a.length;
-        int high = n - 1;
+    public static void merge2(int[] arr) {
+        AssertUtils.notNull(arr);
+
+        final int lft = 0;
+        final int rgt = arr.length - 1;
         // 进行logN次两两归并
-        // p代表size
-        int delta = 0;
-        for (int p = 1; p <= high; p = delta) {
-            delta = p << 1;
-            // 每个size下对每一个划分的小组进行归并
-            for (int low = 0; low <= high - p; low += delta) {
-                mergeSortPartMerge(a, low, low + p - 1, Math.min(low + delta - 1, high));
+        int box = 1;
+        while (true) {
+            //每次从左到右按照box大小进行合并
+            for (int lps = lft; lps <= rgt; lps += box) {
+                int rps = lps + box - 1;
+                doMerge(arr, lps, (lps + rps) / 2, Math.min(rps, rgt));
             }
+            if (box > rgt) {
+                break;
+            }
+            box <<= 1;
         }
     }
 
