@@ -1,6 +1,7 @@
 package cn.by1e.h2o.study.interview.myself.sort;
 
 import cn.by1e.ox.core.util.AssertUtils;
+import org.apache.commons.lang3.ArrayUtils;
 
 /**
  * 再练习一下常见的排序算法：
@@ -69,7 +70,9 @@ public class ArraySortAgain {
     }
 
     public static void quick(int[] a) {
-        AssertUtils.notNull(a);
+        if (ArrayUtils.isEmpty(a)) {
+            return;
+        }
 
         quick0(a, 0, a.length - 1);
     }

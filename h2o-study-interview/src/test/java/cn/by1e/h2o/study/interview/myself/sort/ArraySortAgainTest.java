@@ -27,7 +27,15 @@ public class ArraySortAgainTest {
     }
 
     private void test0(Consumer<int[]> consumer) {
-        int[] t = rand();
+        final int numMin = 0;
+        final int numMax = 20;
+        _test(consumer, 0, 0, numMin, numMax);
+        _test(consumer, 1, 1, numMin, numMax);
+        _test(consumer, 10, 50, numMin, numMax);
+    }
+
+    private void _test(Consumer<int[]> consumer, int lenMin, int lenMax, int numMin, int numMax) {
+        int[] t = rand(lenMin, lenMax, numMin, numMax);
         ConsoleUtils.json(t);
 
         int[] s = Arrays.copyOf(t, t.length);
@@ -43,8 +51,8 @@ public class ArraySortAgainTest {
         return ObjectUtils.equals(JsonUtils.toJsonString(s), JsonUtils.toJsonString(t));
     }
 
-    private int[] rand() {
-        return IntArrayRand.rand2(RandomUtils.nextInt(10, 50), 0, 20);
+    private int[] rand(int lenMin, int lenMax, int numMin, int numMax) {
+        return IntArrayRand.rand2(RandomUtils.nextInt(lenMin, lenMax), numMin, numMax);
     }
 
 }
