@@ -26,9 +26,13 @@ import java.util.List;
 @TagArray
 public class Algorithm054 implements Algorithm<Object> {
 
+    // Right
     private static final int R = 0;
+    // Down
     private static final int D = 1;
+    // Left
     private static final int L = 2;
+    // Up
     private static final int U = 3;
 
     /**
@@ -48,6 +52,7 @@ public class Algorithm054 implements Algorithm<Object> {
         int right = m - 1;
         int top = 0;
         int bottom = n - 1;
+        // direction
         int dir = R;
         int[] res = new int[m * n];
         int pos = 0;
