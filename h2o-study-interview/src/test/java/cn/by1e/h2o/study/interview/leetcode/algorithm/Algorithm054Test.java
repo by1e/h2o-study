@@ -10,12 +10,11 @@ public class Algorithm054Test {
 
     @Test
     public void test() {
-        int[][] params = {
+        AlgorithmTestHelper.smart(new int[][]{
                 new int[]{1, 2, 3, 4},
                 new int[]{5, 6, 7, 8},
                 new int[]{9, 10, 11, 12},
-        };
-        AlgorithmTestHelper.test(Algorithm054.class, params);
+        });
     }
 
 }

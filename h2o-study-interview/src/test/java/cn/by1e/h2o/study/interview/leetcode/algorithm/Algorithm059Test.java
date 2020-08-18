@@ -10,7 +10,7 @@ public class Algorithm059Test {
 
     @Test
     public void test() {
-        AlgorithmTestHelper.test(Algorithm059.class, 3);
+        AlgorithmTestHelper.smart(3);
     }
 
 }
