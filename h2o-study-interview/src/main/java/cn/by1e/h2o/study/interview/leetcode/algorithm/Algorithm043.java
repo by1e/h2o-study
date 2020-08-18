@@ -1,5 +1,8 @@
 package cn.by1e.h2o.study.interview.leetcode.algorithm;
 
+import cn.by1e.h2o.study.interview.leetcode.algorithm.annotation.LevelMiddle;
+import cn.by1e.h2o.study.interview.leetcode.algorithm.annotation.TagMath;
+import cn.by1e.h2o.study.interview.leetcode.algorithm.annotation.TagString;
 import cn.by1e.h2o.study.interview.leetcode.algorithm.support.Algorithm;
 import cn.by1e.h2o.study.interview.leetcode.algorithm.support.AlgorithmFunction;
 import cn.by1e.h2o.study.interview.leetcode.algorithm.support.AlgorithmInput;
@@ -16,6 +19,9 @@ import cn.by1e.h2o.study.interview.leetcode.algorithm.support.AlgorithmInput;
  * @author bangquan.qian
  * @date 2020-07-16 12:44
  */
+@LevelMiddle
+@TagString
+@TagMath
 public class Algorithm043 implements Algorithm<String> {
 
     /**
@@ -53,8 +59,8 @@ public class Algorithm043 implements Algorithm<String> {
             int a = res[i];
             int b = tmp[i];
             int t = a + b;
-            int x =  ret[i]+t;
-            ret[i]=x%10;
+            int x = ret[i] + t;
+            ret[i] = x % 10;
             ret[i - 1] += x / 10;
         }
         return ret;

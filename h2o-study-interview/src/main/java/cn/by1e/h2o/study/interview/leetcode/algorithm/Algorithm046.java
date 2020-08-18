@@ -1,5 +1,7 @@
 package cn.by1e.h2o.study.interview.leetcode.algorithm;
 
+import cn.by1e.h2o.study.interview.leetcode.algorithm.annotation.LevelMiddle;
+import cn.by1e.h2o.study.interview.leetcode.algorithm.annotation.TagBackTrack;
 import cn.by1e.h2o.study.interview.leetcode.algorithm.support.Algorithm;
 import cn.by1e.h2o.study.interview.leetcode.algorithm.support.AlgorithmFunction;
 import cn.by1e.h2o.study.interview.leetcode.algorithm.support.AlgorithmInput;
@@ -19,6 +21,8 @@ import java.util.List;
  * @author bangquan.qian
  * @date 2020-07-16 12:44
  */
+@LevelMiddle
+@TagBackTrack
 public class Algorithm046 implements Algorithm<Object> {
 
     /**
