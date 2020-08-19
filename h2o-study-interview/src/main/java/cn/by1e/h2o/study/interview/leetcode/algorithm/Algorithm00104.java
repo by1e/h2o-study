@@ -7,6 +7,9 @@ import cn.by1e.h2o.study.interview.leetcode.algorithm.annotation.TagDeepFirstSea
 import cn.by1e.h2o.study.interview.leetcode.algorithm.extend.TreeNode;
 import cn.by1e.h2o.study.interview.leetcode.algorithm.support.AlgorithmSupport;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * 标题：二叉树的最大深度
  * <p>
@@ -35,13 +38,47 @@ import cn.by1e.h2o.study.interview.leetcode.algorithm.support.AlgorithmSupport;
 @TagDeepFirstSearch
 public class Algorithm00104 extends AlgorithmSupport {
 
-    @AlgorithmBody
+    /**
+     * 执行用时：0ms,在所有Java提交中击败了100.00%的用户
+     * 内存消耗：39.8MB,在所有Java提交中击败了47.91%的用户
+     */
+    //@AlgorithmBody
     public int maxDepth(TreeNode root) {
         //递归法
         if (root == null) {
             return 0;
         }
         return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+    }
+
+    /**
+     * 执行用时：1ms,在所有Java提交中击败了16.78%的用户
+     * 内存消耗：39.6MB,在所有Java提交中击败了79.95%的用户
+     */
+    @AlgorithmBody
+    public int maxDepth2(TreeNode root) {
+        //使用bfs实现
+        if (root == null) {
+            return 0;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        int level = 0;
+        int size;
+        while ((size = queue.size()) > 0) {
+            while (size-- > 0) {
+                // size==0意味着该层遍历完毕
+                TreeNode pop = queue.poll();
+                if (pop.left != null) {
+                    queue.offer(pop.left);
+                }
+                if (pop.right != null) {
+                    queue.offer(pop.right);
+                }
+            }
+            level++;
+        }
+        return level;
     }
 
 }

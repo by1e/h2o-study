@@ -15,7 +15,8 @@ public class AlgorithmExecutor {
     }
 
     private static <T> Algorithm<T> of(Class<? extends Algorithm<T>> clz) {
-        return InvokeUtils.invokeRe(clz::newInstance);
+        //return InvokeUtils.invokeRe(clz::newInstance);
+        return new AlgorithmSupport<T>(InvokeUtils.invokeRe(clz::newInstance));
     }
 
     private static <T> AlgorithmOutput<T> execute(Algorithm<T> algorithm, Object... params) {
