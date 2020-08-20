@@ -15,6 +15,14 @@ import cn.by1e.h2o.study.interview.leetcode.algorithm.annotation.TagDynamicProgr
  * 标签：数组，动态规划
  * <p>
  * 难度：简单
+ * <p>
+ * 补充：
+ * LeetCode 121：最多进行 1 笔交易（k=1）【贪心】
+ * LeetCode 122：不限交易次数（k=+inf）【二维 DP】
+ * LeetCode 309：不限交易次数（k=+inf），但有「冷冻期」的额外条件
+ * LeetCode 714：不限交易次数（k=+inf），但有「手续费」的额外条件
+ * LeetCode 123：最多进行 2 笔交易（k=2）【三维 DP】
+ * LeetCode 188：最多进行 k 次交易
  *
  * @author bangquan.qian
  * @date 2020-07-16 12:44
