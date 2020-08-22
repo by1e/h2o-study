@@ -43,24 +43,25 @@ public class Algorithm00124 {
         }
 
         //先持续递归遍历到最左叶子节点
-        int partLeft = dfs(node.left);
-        if (partLeft < 0) {
+        int partMaxLeftRoad = dfs(node.left);
+        if (partMaxLeftRoad < 0) {
             // 小于0的子树结果忽略
-            partLeft = 0;
+            partMaxLeftRoad = 0;
         }
 
-        int partRight = dfs(node.right);
-        if (partRight < 0) {
+        int partMaxRightRoad = dfs(node.right);
+        if (partMaxRightRoad < 0) {
             // 小于0的子树结果忽略
-            partRight = 0;
+            partMaxRightRoad = 0;
         }
 
-        int part = node.val + partLeft + partRight;
+        // 此时以node为顶的子树路径和
+        int part = node.val + partMaxLeftRoad + partMaxRightRoad;
         if (part > max) {
             max = part;
         }
 
-        return node.val + Math.max(partLeft, partRight);/*返回左路径或右路径最大的值*/
+        return node.val + Math.max(partMaxLeftRoad, partMaxRightRoad);/*返回左路径或右路径最大的哪一个*/
     }
 
 }
