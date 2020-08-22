@@ -65,4 +65,18 @@ public class Algorithm00136 {
         return 0;
     }
 
+    /**
+     * 执行用时：1ms,在所有Java提交中击败了99.69%的用户
+     * 内存消耗：40.7MB,在所有Java提交中击败了74.08%的用户
+     */
+    public int singleNumber2(int[] nums) {
+        // 位运算，异或
+        int len = nums.length;
+        int num = 0;
+        for (int idx = 0; idx < len; idx++) {
+            num ^= nums[idx];
+        }
+        return num;
+    }
+
 }
