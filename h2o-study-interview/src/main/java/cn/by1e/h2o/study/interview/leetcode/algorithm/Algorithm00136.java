@@ -1,9 +1,6 @@
 package cn.by1e.h2o.study.interview.leetcode.algorithm;
 
-import cn.by1e.h2o.study.interview.leetcode.algorithm.annotation.AlgorithmBody;
-import cn.by1e.h2o.study.interview.leetcode.algorithm.annotation.LevelHard;
-import cn.by1e.h2o.study.interview.leetcode.algorithm.annotation.TagDeepFirstSearch;
-import cn.by1e.h2o.study.interview.leetcode.algorithm.annotation.TagTree;
+import cn.by1e.h2o.study.interview.leetcode.algorithm.annotation.*;
 
 /**
  * 标题：只出现一次的数字
@@ -12,16 +9,16 @@ import cn.by1e.h2o.study.interview.leetcode.algorithm.annotation.TagTree;
  * 说明：
  * 你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？
  * <p>
- * 标签：树，深度优先遍历
+ * 标签：hash法，位运算
  * <p>
  * 难度：简单
  *
  * @author bangquan.qian
  * @date 2020-07-16 12:44
  */
-@LevelHard
-@TagTree
-@TagDeepFirstSearch
+@LevelSimple
+@TagBitOperation
+@TagHashTable
 public class Algorithm00136 {
 
     /**
