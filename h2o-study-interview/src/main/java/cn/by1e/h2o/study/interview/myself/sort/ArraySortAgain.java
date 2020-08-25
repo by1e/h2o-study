@@ -175,6 +175,64 @@ public class ArraySortAgain {
         }
     }
 
+    public static void heap(int[] a) {
+        /*
+         *堆排序的关键理解：
+         *每次构建大顶堆，然后将堆顶元素移到数组末端（堆顶和最后的叶子节点交换位置），再对剩余元素进行构建大顶堆
+         */
+        int len = a.length;
+        if (len < 1) {
+            return;
+        }
+
+        //初始构建大顶堆
+        heapify(a, len);
+
+        while (--len > 0) {
+            //每次将堆顶与最后一个叶子节点交换位置
+            swap(a, 0, len);
+            //调整剩余部分为大顶堆
+            adjust(a, 0, len);
+        }
+    }
+
+    private static int parent(int n) {
+        return (n - 1) / 2;
+    }
+
+    private static int left(int n) {
+        return 2 * n + 1;
+    }
+
+    private static int right(int n) {
+        return 2 * n + 2;
+    }
+
+    private static void heapify(int[] a, int len) {
+        //大顶堆，从最后一个非叶子节点开始，向上递归调整，使得最下面的大元素能慢慢浮到堆顶
+        for (int i = len / 2 - 1; i > -1; i--) {
+            adjust(a, i, len);
+        }
+    }
+
+    private static void adjust(int[] a, int idx, int len) {
+        //递归讲idx节点以下的子树逐步调整成大顶堆
+        int max = idx;
+        int left = left(idx);
+        if (left < len && a[left] > a[max]) {
+            max = left;
+        }
+        int right = right(idx);
+        if (right < len && a[right] > a[max]) {
+            max = right;
+        }
+        if (max != idx) {
+            swap(a, max, idx);
+            //继续调整左孩子或右孩子的子树，使其构成大顶堆
+            adjust(a, max, len);
+        }
+    }
+
     private static void swap(int[] a, int i, int j) {
         int t = a[i];
         a[i] = a[j];

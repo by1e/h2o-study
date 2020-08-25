@@ -24,6 +24,7 @@ public class ArraySortAgainTest {
         test0(ArraySortAgain::quick);
         test0(ArraySortAgain::merge);
         test0(ArraySortAgain::merge2);
+        test0(ArraySortAgain::heap);
     }
 
     private void test0(Consumer<int[]> consumer) {
