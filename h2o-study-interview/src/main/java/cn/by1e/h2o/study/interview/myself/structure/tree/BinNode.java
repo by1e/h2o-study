@@ -6,11 +6,13 @@ package cn.by1e.h2o.study.interview.myself.structure.tree;
  */
 public class BinNode<T> {
 
-    private T value;
+    T value;
 
-    private BinNode<T> left;
+    BinNode<T> left;
 
-    private BinNode<T> right;
+    BinNode<T> right;
+
+    BinNode<T> parent;
 
     public BinNode() {
     }
@@ -41,5 +43,13 @@ public class BinNode<T> {
 
     public void setRight(BinNode<T> right) {
         this.right = right;
+    }
+
+    public BinNode<T> getParent() {
+        return parent;
+    }
+
+    public void setParent(BinNode<T> parent) {
+        this.parent = parent;
     }
 }
