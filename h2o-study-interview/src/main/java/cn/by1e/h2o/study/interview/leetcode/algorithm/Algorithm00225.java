@@ -59,6 +59,10 @@ public class Algorithm00225 {
         ConsoleUtils.json(lst);
     }
 
+    /**
+     * 执行用时：0ms,在所有Java提交中击败了100.00%的用户
+     * 内存消耗：37.5MB,在所有Java提交中击败了29.99%的用户
+     */
     public static class MyStack {
 
         private static final int NOT_EXIST = -1;
