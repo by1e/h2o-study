@@ -3,6 +3,7 @@ package cn.by1e.h2o.study.interview.leetcode.jianzhioffer;
 import cn.by1e.h2o.study.interview.leetcode.algorithm.annotation.TagBreadthFirstSearch;
 import cn.by1e.h2o.study.interview.leetcode.algorithm.annotation.TagTree;
 import cn.by1e.h2o.study.interview.leetcode.jianzhioffer.domain.TreeNode;
+import cn.by1e.h2o.study.interview.leetcode.jianzhioffer.support.JzOfferHelper;
 import cn.by1e.ox.core.util.ConsoleUtils;
 import org.apache.commons.collections4.CollectionUtils;
 
@@ -22,7 +23,7 @@ import java.util.List;
  */
 @TagTree
 @TagBreadthFirstSearch
-public class JzOffer32 {
+public class JzOffer32_3 {
 
     /**
      * 执行用时：1ms,在所有Java提交中击败了99.76%的用户
@@ -32,7 +33,7 @@ public class JzOffer32 {
 
         public List<List<Integer>> levelOrder(TreeNode root) {
             List<List<Integer>> lst = new ArrayList<>();
-            if(root==null){
+            if (root == null) {
                 return lst;
             }
             Deque<TreeNode> deque = new LinkedList<>();
@@ -89,7 +90,7 @@ public class JzOffer32 {
 
         TreeNode root = n1;
 
-        List<List<Integer>> lists = new Solution().levelOrder(root);
+        List<List<Integer>> lists = JzOfferHelper.run(Solution.class, root);
         ConsoleUtils.json(lists);
     }
 
