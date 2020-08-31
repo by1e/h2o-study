@@ -1,5 +1,6 @@
 package cn.by1e.h2o.study.interview.leetcode.multithread;
 
+import cn.by1e.h2o.study.interview.leetcode.algorithm.annotation.LevelMiddle;
 import cn.by1e.ox.core.util.ConsoleUtils;
 import cn.by1e.ox.core.util.InvokeUtils;
 
@@ -37,6 +38,7 @@ import java.util.function.IntConsumer;
  * @author bangquan.qian
  * @date 2020-08-31 10:45
  */
+@LevelMiddle
 public class Mt1195 {
 
     /**
