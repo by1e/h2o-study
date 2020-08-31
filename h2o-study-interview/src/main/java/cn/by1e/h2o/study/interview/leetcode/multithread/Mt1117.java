@@ -33,6 +33,10 @@ import java.util.concurrent.Semaphore;
 @LevelMiddle
 public class Mt1117 {
 
+    /**
+     * 执行用时：19ms,在所有Java提交中击败了51.11%的用户
+     * 内存消耗：41MB,在所有Java提交中击败了90.98%的用户
+     */
     public static class Solution1 {
 
         static class H2O {
