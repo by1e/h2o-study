@@ -318,6 +318,7 @@ public class Mt1114 {
             new Thread(() -> InvokeUtils.voidInvokeRe(() -> foo.third(() -> ConsoleUtils.sout("third4")))).start();
             new Thread(() -> InvokeUtils.voidInvokeRe(() -> foo.first(() -> ConsoleUtils.sout("first4")))).start();
         }
+
     }
 
 
