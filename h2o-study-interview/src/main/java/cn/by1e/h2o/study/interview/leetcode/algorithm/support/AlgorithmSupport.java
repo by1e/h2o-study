@@ -34,11 +34,15 @@ public class AlgorithmSupport<T> implements Algorithm<T> {
         Class clz = target.getClass();
         Method[] methods = clz.getDeclaredMethods();
         Method targetMethod = null;
-        for (Method method : methods) {
-            AlgorithmBody annotation = method.getAnnotation(AlgorithmBody.class);
-            if (annotation != null) {
-                targetMethod = method;
-                break;
+        if (methods.length == 1) {
+            targetMethod = methods[0];
+        } else {
+            for (Method method : methods) {
+                AlgorithmBody annotation = method.getAnnotation(AlgorithmBody.class);
+                if (annotation != null) {
+                    targetMethod = method;
+                    break;
+                }
             }
         }
         if (targetMethod == null) {
